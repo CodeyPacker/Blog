@@ -1,5 +1,4 @@
 import Head from "next/head";
-
 import { fetchEntries } from "@utils/contentfulPosts";
 
 import Header from "@components/Header";
@@ -10,20 +9,21 @@ export default function Home({ posts }) {
   return (
     <div className="container">
       <Head>
-        <title>Next + Contentful Starter</title>
+        <title>Next + Contentful Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <Header />
         <div className="posts">
-          {posts.map((p) => {
+          {posts.map((p, i) => {
             return (
               <Post
                 key={p.date}
                 date={p.date}
                 image={p.image.fields}
                 title={p.title}
+                index={i}
               />
             );
           })}

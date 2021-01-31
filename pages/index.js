@@ -4,6 +4,7 @@ import { fetchEntries } from "@utils/contentfulPosts";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Post from "@components/Post";
+import styles from '@components/Post.module.scss';
 
 export default function Home({ posts }) {
   return (
@@ -14,8 +15,8 @@ export default function Home({ posts }) {
       </Head>
 
       <main>
-        <Header />
-        <div className="posts">
+        <Header title="Creative logo"/>
+        <div className={styles.posts}>
           {posts.map((p, i) => {
             return (
               <Post

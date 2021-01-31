@@ -10,10 +10,10 @@ function Post({ date, image, title, index, article}) {
     <div className={styles.post}>
       <img className={styles.postImage} alt={description} src={`https:${file.url}`} />
       <div className={styles.postDetails}>
-        <h2>{title}</h2>
-        <h3>{date.substring(0, 10)}</h3>
-        <p className="description">{content[0]}...</p>
-        <span onClick={() => router.push(`/post/${index}`)}>View post...</span>
+        <h2 className={styles.postTitle}>{title}</h2>
+        <span className={styles.postDate}>{date.substring(0, 10)}</span>
+        <p>{content[0]}...</p>
+        <span className={styles.postLink} role="button" onClick={() => router.push(`/post/${index}`)}>View post...</span>
       </div>
     </div>
   );

@@ -1,3 +1,9 @@
+import styles from './Header.module.scss'
+
 export default function Header({ title }) {
-  return <h1 className="title">{title}</h1>
+  return (
+    <div className={styles.header}>
+      <span className={styles.logo, 'constraint'}>{title}</span>
+    </div>
+  )
 }

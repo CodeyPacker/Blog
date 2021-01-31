@@ -12,7 +12,7 @@ function Post({ date, image, title, index }) {
         <h2>{title}</h2>
         <h3>{date.substring(0, 10)}</h3>
         <p className="description">{description}</p>
-        <span onClick={() => router.push(`/post/${index}`)}>Read me...</span>
+        <span onClick={() => router.push(`/post/${index}`)}>View post...</span>
       </div>
     </div>
   );

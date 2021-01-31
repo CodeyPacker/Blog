@@ -26,6 +26,7 @@ export default function Home({ posts }) {
                 date={p.date}
                 image={p.image.fields}
                 title={p.title}
+                article={p.article}
                 index={i}
               />
             );

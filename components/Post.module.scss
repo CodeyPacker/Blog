@@ -1,10 +1,24 @@
+// TODO: possibly break these out into their own
+// Single post
+.hero {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.heroImg {
+    max-height: 300px;
+    width: 100%;
+}
+
 .posts {
     padding: 30px 15px;
 }
 
 .post {
-    box-sizing: border-box;
     margin-bottom: 30px;
+    box-shadow: -2px -2px 8px 0px #fff,
+    2px 2px 8px 0px #a3b1c6;
 
     @media only screen and (min-width: 768px) {
         &:nth-of-type(odd) { margin-right: 15px; }
@@ -21,7 +35,8 @@
 }
 
 .postDetails {
-    border: 1px solid #1e1e1e;
     transform: translateY(-3px);
     padding: 0 15px 15px 15px;
 }
+
+// Single post hero

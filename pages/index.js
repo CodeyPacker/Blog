@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { fetchEntries } from "@utils/contentfulPosts";
+import _JSXStyle from 'styled-jsx/style'
 
 import Footer from "@components/Footer";
 import Post from "@components/Post";
-import styles from '@components/Post.module.scss';
 
 export default function Home({ posts }) {
   return (
@@ -16,7 +16,7 @@ export default function Home({ posts }) {
       </Head>
 
       <main>
-        <div className={styles.posts}>
+        <div className="posts">
           {posts.map((p, i) => {
             return (
               <Post
@@ -33,13 +33,24 @@ export default function Home({ posts }) {
       </main>
 
       <Footer />
+
+      <style jsx>{`
+        .posts {
+          padding: 30px 15px;
+          max-width: 1200px;
+          margin-right: auto;
+          margin-left: auto;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+      `}</style>
     </div>
   );
 }
 
 export async function getStaticProps() {
   const res = await fetchEntries();
-  const posts = await res.map((p) => {
+  const posts = await res.map(p => {
     return p.fields;
   });
 

@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router'
 import _JSXStyle from 'styled-jsx/style'
+import Link from 'next/link'
 
 function Post({ date, image, title, index, article}) {
   const router = useRouter();
   let { file, description } = image;
   const content = article.content.map((n) => n.nodeType === 'paragraph' && n.content[0].value).map(p => p.substring(0, 50))
-
+  const linkPath = `/post/${index}`;
   return (
     <div className="post">
       <img className="image" alt={description} src={`https:${file.url}`} />
@@ -13,7 +14,8 @@ function Post({ date, image, title, index, article}) {
         <h2 className="title">{title}</h2>
         <span className="date">{date.substring(0, 10)}</span>
         <p>{content[0]}...</p>
-        <span className="link" role="button" onClick={() => router.push(`/post/${index}`)}>View post...</span>
+        <Link className="link" href={linkPath}>View post</Link>
+        {/* <span className="link" role="button" onClick={() => router.push(`/post/${index}`)}>View post...</span> */}
       </div>
       <style jsx>{`
         .post {

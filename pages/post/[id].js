@@ -4,11 +4,10 @@ import _JSXStyle from 'styled-jsx/style'
 
 // TODO: Set up Context and store posts there, and use that data everywhere so I'm not
 // doing multiple requests.
-// WARNING: If a post is deleted while a user is on the index page, the single page will break on arrival.
 
 export default function singlePost({posts}) {
   const router = useRouter();
-  const { id } = router.query;
+  const { id }  = router.query;
   const currentPost = posts[`${id}`];
   // TODO: use the rich-text-to-react package, which makes getting all content types easy.
   // This is limited to paragraphs
@@ -22,7 +21,7 @@ export default function singlePost({posts}) {
       <section className="constraint">
         <h2>{currentPost.title}</h2>
         <span>{currentPost.date.substring(0, 10)}</span>
-        {content.map(txt => <p>{txt}</p>)}
+        {content.map((txt, i) => <p key={i}>{txt}</p>)}
       </section>
       <style jsx>{`
         .hero {
@@ -40,8 +39,8 @@ export default function singlePost({posts}) {
   )
 }
 
-export async function getServerSideProps() {
-  const res = await fetchEntries();
+export async function getStaticProps() {
+  const res = await fetchEntries()
   const posts = await res.map((p) => {
     return p.fields;
   });
@@ -50,5 +49,18 @@ export async function getServerSideProps() {
     props: {
       posts,
     },
-  };
+  }
+}
+
+export const getStaticPaths = async () => {
+  // generate the paths
+  const paths = [
+    `/post/id`,
+  ]
+
+  return {
+     paths,
+     fallback: true
+  }
+
 }

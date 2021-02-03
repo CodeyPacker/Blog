@@ -6,7 +6,6 @@ import _JSXStyle from "styled-jsx/style";
 // doing multiple requests.
 
 export default function singlePost({ posts }) {
-  console.log(posts);
   const router = useRouter();
   const { id } = router.query;
   const currentPost = posts[`${id}`];
@@ -52,6 +51,7 @@ export default function singlePost({ posts }) {
   );
 }
 
+// props.posts get passed into singlePost
 export async function getStaticProps() {
   const res = await fetchEntries();
   const posts = await res.map((p) => {
@@ -72,6 +72,7 @@ export const getStaticPaths = async () => {
   });
 
   // TODO: loop over posts and use the index for the id
+  // Struggling with this part during the build process, even after making the paths dynamically
   const paths = [
     { params: { id: "0" } },
     { params: { id: "1" } },

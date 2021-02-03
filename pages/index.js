@@ -51,6 +51,8 @@ export default function Home({ posts }) {
   );
 }
 
+// Grab entries from Contenful
+// This gets passed into the component as props
 export async function getStaticProps() {
   const res = await fetchEntries();
   const posts = await res.map((p) => {
